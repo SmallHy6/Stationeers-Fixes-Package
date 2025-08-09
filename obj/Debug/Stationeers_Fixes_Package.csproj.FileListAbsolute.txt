@@ -1,0 +1,6 @@
+D:\SteamLibrary\steamapps\common\Stationeers\BepInEx\plugins\Stationeers-Fixes-Package\Stationeers_Fixes_Package.dll
+D:\SteamLibrary\steamapps\common\Stationeers\BepInEx\plugins\Stationeers-Fixes-Package\Stationeers_Fixes_Package.pdb
+F:\SmallHyProject\VisualStudioProject\Stationeers_Fixes_Package\Stationeers_Fixes_Package\obj\Debug\Stationeers_Fixes_Package.csproj.AssemblyReference.cache
+F:\SmallHyProject\VisualStudioProject\Stationeers_Fixes_Package\Stationeers_Fixes_Package\obj\Debug\Stationeers_Fixes_Package.csproj.CoreCompileInputs.cache
+F:\SmallHyProject\VisualStudioProject\Stationeers_Fixes_Package\Stationeers_Fixes_Package\obj\Debug\Stationeers_Fixes_Package.dll
+F:\SmallHyProject\VisualStudioProject\Stationeers_Fixes_Package\Stationeers_Fixes_Package\obj\Debug\Stationeers_Fixes_Package.pdb
