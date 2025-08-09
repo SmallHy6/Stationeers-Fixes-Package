@@ -15,8 +15,8 @@ QQ:859072704
 [CN]
 # 空间站工程师修复补丁包
 ## [安装教程]
-·第一步:你需要拥有[BepinEx6.x](https://github.com/BepInEx/BepInEx?tab=readme-ov-file)插件(不支持BepinEx5.x)并确保正确安装
-·第二步:将该文件移动到位于[游戏根目录\BepinEx\Plugins]目录下
+·第一步:你需要拥有[BepinEx6.x](https://github.com/BepInEx/BepInEx?tab=readme-ov-file)插件(不支持BepinEx5.x)并确保正确安装.
+·第二步:将该文件移动到位于[游戏根目录\BepinEx\Plugins]目录下.
 ·第三部:打开游戏并享受游戏人生:)
 ## [更新日志]
 ### 2025.8.9
