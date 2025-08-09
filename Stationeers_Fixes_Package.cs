@@ -18,7 +18,7 @@ namespace Stationeers_Fixes_Packages
         void Start()
         {
             Harmony.CreateAndPatchAll(typeof(Stationeers_Fixes_Packages));
-            Logger.LogInfo("Stationeers_Fixes_Packages初始化成功!");
+            Logger.LogInfo("Stationeers_Fixes_Packages Init Succeed!");
         }
         [HarmonyPrefix, HarmonyPatch(typeof(Assets.Scripts.UI.Stationpedia), "ForceSearch")]
         public static bool UI_Stationpedia_Search_Patch(string searchText)
