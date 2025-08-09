@@ -1,7 +1,7 @@
 [EN]
 # Stationeers-Fixes-Package
 ## [Description]
-·This is a Stationeers Fixes Package.
+·This is a Stationeers Fixes Package.  
 ## [How To Use]
 ·Step1:You need to have the [BepinEx6.x](https://github.com/BepInEx/BepInEx?tab=readme-ov-file) plugin(Not Support BepinEx5.x) and ensure it is installed correctly.  
 ·Step2:You need to move the plugin to the plugins folder of BepinEx,It is usually located on the [YourGameFolder\BepinEx\Plugins].  
