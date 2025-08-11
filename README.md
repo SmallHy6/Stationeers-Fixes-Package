@@ -20,8 +20,8 @@ QQ:859072704
 ·第一步:你需要拥有[BepinEx5.x](https://github.com/BepInEx/BepInEx/releases) [BepinEx6.x](https://builds.bepinex.dev/projects/bepinex_be)插件并确保正确安装。  
 ·第二步:[下载插件](https://github.com/SmallHy6/Stationeers-Fixes-Package/releases/tag/v1.0.0),如果你是BepinEx5.X,则你应该下载[Be5_Be5_Stationeers_Fixes_Package.dll](Stationeers_Fixes_Package.dll
 )，[BepinEx6.x](https://github.com/SmallHy6/Stationeers-Fixes-Package/releases/download/v1.0.0/Be6_Stationeers_Fixes_Package.dll)同理。  
-将该文件移动到位于[游戏根目录\BepinEx\Plugins]目录下。  
-·第三步:打开游戏并享受游戏人生:)  
+·第三步将该文件移动到位于[游戏根目录\BepinEx\Plugins]目录下。  
+·第四步:打开游戏并享受游戏人生:)  
 ## [更新日志]
 v1.0.0
 ·修复了F1帮助菜单搜索框不支持中文搜索.
