@@ -71,8 +71,8 @@ QQ:859072704
 
 ## [安装教程]
 ·第一步:你需要拥有[BepinEx5.x](https://github.com/BepInEx/BepInEx/releases)  
-·第二步:[下载插件](https://github.com/SmallHy6/Stationeers-Fixes-Package/releases)  
-·第三步:将该文件移动到位于[游戏根目录\BepinEx\Plugins]目录下。  
+·第二步:[下载本插件](https://github.com/SmallHy6/Stationeers-Fixes-Package/releases)  
+·第三步:安装插件[StationeersLaunchPad](https://github.com/StationeersLaunchPad/StationeersLaunchPad)或将该文件移动到位于[游戏根目录\BepinEx\Plugins]目录下。  
 ·第四步:打开游戏并享受游戏人生:)  
 
 ## [鸣谢名单]
