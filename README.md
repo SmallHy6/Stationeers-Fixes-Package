@@ -24,7 +24,7 @@
 
 ## [How To Use]
 ·Step1:You need to have the [BepinEx5.x](https://github.com/BepInEx/BepInEx/releases)  
-·Step2:[Download File](https://github.com/SmallHy6/Stationeers-Fixes-Package/releases)
+·Step2:[Download File](https://github.com/SmallHy6/Stationeers-Fixes-Package/releases)  
 ·Step3:You need to download [StationeersLaunchPad](https://github.com/StationeersLaunchPad/StationeersLaunchPad) or move the plugin to the plugins folder of BepinEx,It is usually located on the [YourGameFolder\BepinEx\Plugins].  
 ·Step4:Start your game and enjoy:)  
 
