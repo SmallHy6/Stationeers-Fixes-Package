@@ -8,3 +8,5 @@ F:\SmallHyProject\VisualStudioProject\Stationeers\Sources\Fixes_Package\Statione
 F:\SmallHyProject\VisualStudioProject\Stationeers\Sources\Fixes_Package\Stationeers_Fixes_Package\obj\Debug\Fixes_Package.csproj.CoreCompileInputs.cache
 F:\SmallHyProject\VisualStudioProject\Stationeers\Sources\Fixes_Package\Stationeers_Fixes_Package\obj\Debug\Stationeers_Fixes_Package.dll
 F:\SmallHyProject\VisualStudioProject\Stationeers\Sources\Fixes_Package\Stationeers_Fixes_Package\obj\Debug\Stationeers_Fixes_Package.pdb
+D:\SteamLibrary\steamapps\workshop\content\544550\3560271413\GameData\Stationeers_Fixes_Package.dll
+D:\SteamLibrary\steamapps\workshop\content\544550\3560271413\GameData\Stationeers_Fixes_Package.pdb

@@ -32,6 +32,10 @@
 ·Indifferent Anran: Provided support for most of the code  
 
 ## [Change log]
+### v1.5.0.2
+·Fix - F1 Encyclopedia Chinese input no result fix (duplicate patch issue)  
+·Fix - Game Font Repair Mouth (Item Details Through Mold)  
+
 ### v1.5.0
 ·Update - More features of angle grinder  
 ·Update - More Labeling Machine Features  
@@ -79,6 +83,11 @@ QQ:859072704
 ·淡漠安然:提供了大部分代码的支持  
 
 ## [更新日志]
+### v1.5.0.2
+·修复-F1百科中文输入无结果修复(重复补丁问题)  
+
+·修复-游戏字体修复口口口(物品详细信息穿模)  
+
 ### v1.5.0
 ·更新-更多的角磨机功能  
 ·更新-更多的贴标机功能  

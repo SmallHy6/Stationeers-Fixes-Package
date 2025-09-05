@@ -36,7 +36,8 @@ namespace Stationeers_Fixes_Package
     [BepInPlugin(Plugin_Config.ID, Plugin_Config.Name, Plugin_Config.Version)]
     public class Stationeers_Fixes_Package_Initialization : BaseUnityPlugin
     {
-        void Awake()
+        public static Harmony InitHarmony;
+        private void Awake()
         {
             Config.Bind<string>(
                 section: "General",
@@ -44,7 +45,7 @@ namespace Stationeers_Fixes_Package
                 defaultValue: "None",
                 description: "nop"
             );
-            var InitHarmony = new Harmony("Stationeers_Fixes_Package");
+            Harmony InitHarmony = new Harmony(Plugin_Config.ID);
             InitHarmony.PatchAll();
             Logger.LogWarning($"{Plugin_Config.Name}.初始化成功!");
         }
