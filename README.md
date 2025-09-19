@@ -32,6 +32,10 @@
 ·Indifferent Anran: Provided support for most of the code  
 
 ## [Change log]
+### v2.6.0.0-Beta
+·Update - Support Game Version(26015)  
+·Update - Plugin Config Setting On Folder(Game\BepinEx\config\SmallHy.Plugin.Fixes.Package.cfg)  
+
 ### v1.5.0.2
 ·Fix - F1 Encyclopedia Chinese input no result fix (duplicate patch issue)  
 ·Fix - Game Font Repair Mouth (Item Details Through Mold)  
@@ -83,6 +87,11 @@ QQ:859072704
 ·淡漠安然:提供了大部分代码的支持  
 
 ## [更新日志]
+### v2.6.0.0-Beta
+·更新 - 支持游戏版本(26015)
+
+·更新 - 插件配置文件(BepinEx\config\SmallHy.Plugin.Fixes.Package.cfg)
+
 ### v1.5.0.2
 ·修复-F1百科中文输入无结果修复(重复补丁问题)  
 
