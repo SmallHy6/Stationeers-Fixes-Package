@@ -20,9 +20,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static meanran_xuexi_mods_xiaoyouhua.链接选择面板渲染分支选择消息;
+using static Stationeers_Fixes_Package.链接选择面板渲染分支选择消息;
 
-namespace meanran_xuexi_mods_xiaoyouhua
+namespace Stationeers_Fixes_Package
 {
     public class ILogicableReference内存结构
     {

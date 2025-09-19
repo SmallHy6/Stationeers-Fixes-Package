@@ -1,7 +1,7 @@
 using Assets.Scripts.UI;
 using HarmonyLib;
 
-namespace meanran_xuexi_mods_xiaoyouhua
+namespace Stationeers_Fixes_Package
 {
     [HarmonyPatch(typeof(InventoryWindow), nameof(InventoryWindow.SetVisible))]
     public class InventoryWindow_SetVisible_Patch

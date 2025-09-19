@@ -16,12 +16,12 @@ namespace Stationeers_Fixes_Package
         [HarmonyPrefix]
         public static void Setup(Assets.Scripts.UI.SettingItem __instance)
         {
-            Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.HUD下限.补丁成功!");
             var Scale_Value = __instance.Selectable as Slider;
             if (Scale_Value != null)
             {
                 if (Scale_Value.minValue == 25)
                 {
+                    Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.HUD下限.补丁成功!");
                     Scale_Value.minValue = 1;
                     Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.HUD下限.修改成功!");
                 }

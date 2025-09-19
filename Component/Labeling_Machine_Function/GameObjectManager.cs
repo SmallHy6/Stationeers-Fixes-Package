@@ -10,25 +10,25 @@ using UnityEngine;
 using UnityEngine.UI;
 using Util;
 
-namespace meanran_xuexi_mods_xiaoyouhua
+namespace Stationeers_Fixes_Package
 {
     [HarmonyPatch(typeof(Prefab), nameof(Prefab.LoadAll))]
     public class Prefab_LoadAll_Patch
     {
         public static void Postfix()
         {
-            if (AssetsLoad.单例.内置TMP字体)
+            if (AssetsLoad.单例.内置TMP字体 && AssetsLoad.Font字体)
             {
                 var 所有资源 = AssetsLoad.单例.所有资源;
                 var 节点 = Traverse.Create(Prefab.PrefabsGameObject).GetValue() as GameObject;
                 // File.AppendAllText($"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}/3.txt", 层级.打印层级信息(节点));
 
                 修改气体显示UI(节点);
-                Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>气体显示");
+                // Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>气体显示");
                 // 修改哈希显示UI(节点);
-                // Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>哈希显示");
+                // tationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>哈希显示");
                 修改基因分析UI(节点);
-                Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>基因分析");
+                // Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>基因分析");
                 foreach (var Object in 所有资源)
                 {
                     var type = Object.GetType();
@@ -39,7 +39,7 @@ namespace meanran_xuexi_mods_xiaoyouhua
                         if (文1.transform.parent.name == "SPDACategory")
                         {
                             文1.修改大小与遮罩(20);
-                            Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>SPDACategory");
+                            // Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>SPDACategory");
                         }
                     }
                     else if (type == typeof(Text))
@@ -50,7 +50,7 @@ namespace meanran_xuexi_mods_xiaoyouhua
                         if (文2.transform.parent.name == "ButtonDevice")
                         {
                             文2.修改大小与遮罩(55);
-                            Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>ButtonDevice");
+                            // Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>ButtonDevice");
                         }
                     }
                     else if (type == typeof(GameObject))
@@ -62,14 +62,14 @@ namespace meanran_xuexi_mods_xiaoyouhua
                                 {
                                     foreach (var 文 in obj.GetComponentsInChildren<Text>(includeInactive: true))
                                     { 文.font = AssetsLoad.Font字体; 文.color = Color.black; 文.修改大小与遮罩(15); }
-                                    Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>FilterItem");
+                                    // Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>FilterItem");
                                     break;
                                 }
                             case "SorterItem":
                                 {
                                     var 文 = obj.transform.GetChild(1).GetChild(0).GetComponent<Text>();
                                     文.修改大小与遮罩(28); 文.text = "分拣物品名单";
-                                    Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>SorterItem");
+                                    // Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>SorterItem");
                                     break;
                                 }
                             case "SPDAManufacturedBy":
@@ -83,7 +83,7 @@ namespace meanran_xuexi_mods_xiaoyouhua
                                     配方抬头.修改大小与遮罩(20);
                                     var 配方文本 = 内容区.GetChild(3).GetComponent<TMP_Text>();
                                     配方文本.修改大小与遮罩(20);
-                                    Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>SPDAManufacturedBy");
+                                    // Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>SPDAManufacturedBy");
                                     break;
                                 }
                             case "SPDALogic":
@@ -92,7 +92,7 @@ namespace meanran_xuexi_mods_xiaoyouhua
                                     模式.修改大小与遮罩(20);
                                     var 操作码 = obj.transform.GetChild(1).GetComponent<TMP_Text>();
                                     操作码.修改大小与遮罩(20);
-                                    Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>SPDALogic");
+                                    // Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>SPDALogic");
                                     break;
                                 }
                             case "SPDAVersion":
@@ -104,7 +104,7 @@ namespace meanran_xuexi_mods_xiaoyouhua
                                     背景Rect.sizeDelta = new Vector2(背景Rect.rect.width, 背景Rect.rect.height + 20);
                                     foreach (var 文本工具 in obj.GetComponentsInChildren<TMP_Text>(includeInactive: true))
                                         文本工具.修改大小与遮罩(20);
-                                    Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>SPDAVersion");
+                                    // Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>SPDAVersion");
                                     break;
                                 }
                             case "SPDAGeneric":
@@ -114,7 +114,7 @@ namespace meanran_xuexi_mods_xiaoyouhua
                                     Header.修改大小与遮罩(24);
                                     var Text = 内容区.GetChild(1).GetComponent<TMP_Text>();
                                     Text.修改大小与遮罩(20);
-                                    Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>SPDAGeneric");
+                                    // Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>SPDAGeneric");
                                     break;
                                 }
                             case "SPDAFoundIn":
@@ -123,7 +123,7 @@ namespace meanran_xuexi_mods_xiaoyouhua
                                     InfoValue.修改大小与遮罩(20);
                                     var InfoTitle = obj.transform.GetChild(1).GetComponent<TMP_Text>();
                                     InfoTitle.修改大小与遮罩(20);
-                                    Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>SPDAFoundIn");
+                                    // Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>SPDAFoundIn");
                                     break;
                                 }
                             case "PanelInWorldToolTip":
@@ -135,27 +135,27 @@ namespace meanran_xuexi_mods_xiaoyouhua
                                     鼠标按键与人物动作提示.GetChild(0).gameObject.SetActive(false);
                                     foreach (var 文本工具 in obj.GetComponentsInChildren<TMP_Text>(includeInactive: true))
                                         文本工具.修改大小与遮罩(32);
-                                    Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>PanelInWorldToolTip");
+                                    // Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>PanelInWorldToolTip");
                                     break;
                                 }
                             case "PanelClothing":
                                 {
                                     foreach (var 文本工具 in obj.GetComponentsInChildren<TMP_Text>(includeInactive: true))
                                         文本工具.修改大小与遮罩(24);
-                                    Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>PanelClothing");
+                                    // Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>PanelClothing");
                                     break;
                                 }
                             case "StatusIcons":
                                 {
                                     foreach (var 文本工具 in obj.GetComponentsInChildren<TMP_Text>(includeInactive: true))
                                         文本工具.修改大小与遮罩(24);
-                                    Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>StatusIcons");
+                                    // Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>StatusIcons");
                                     break;
                                 }
                             case "SPDAListItem":
                                 {
                                     obj.AddComponent<SPDAListItem_延时修改>();
-                                    Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>SPDAListItem");
+                                    // Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>SPDAListItem");
                                     break;
                                 }
                             case "MotherboardComms":
@@ -164,7 +164,7 @@ namespace meanran_xuexi_mods_xiaoyouhua
                                     var 通信主板标题 = obj.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>(); ;
                                     通信主板标题.font = AssetsLoad.单例.内置TMP字体;
                                     通信主板标题.text = "通信终端";
-                                    Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>MotherboardComms");
+                                    // Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>MotherboardComms");
                                 }
                                 break;
                             case "ContactItemNew":
@@ -178,7 +178,7 @@ namespace meanran_xuexi_mods_xiaoyouhua
                                     通讯信息.font = AssetsLoad.单例.内置TMP字体;
                                     通讯信息.enableWordWrapping = false;
 
-                                    Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>ContactItemNew");
+                                    // Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改克隆母版=>ContactItemNew");
                                     break;
                                 }
                             case "ContactsTab":
@@ -208,7 +208,7 @@ namespace meanran_xuexi_mods_xiaoyouhua
                                     ILogicableReference.GameObject = _.GameObject;
                                     ILogicableReference.Transform = _.Transform;
                                     UnityEngine.Object.Destroy(_);
-                                    Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功增加数据网节点UI单元=>ILogicableReference");
+                                    // Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功增加数据网节点UI单元=>ILogicableReference");
                                     break;
                                 }
                             case "PanelInputPrefabs":
@@ -232,7 +232,7 @@ namespace meanran_xuexi_mods_xiaoyouhua
                                     链接选择面板.父级画布 = obj.transform.parent.gameObject;
                                     链接选择面板.单例.transform.SetParent(链接选择面板.父级画布.transform, false); ;
 
-                                    Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功增加数据网节点UI面板=>链接选择面板");
+                                    // Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功增加数据网节点UI面板=>链接选择面板");
                                     break;
                                 }
                         }
@@ -241,7 +241,7 @@ namespace meanran_xuexi_mods_xiaoyouhua
                     {
                         var 通用页面 = Object as UniversalPage;
                         通用页面.gameObject.AddComponent<UniversalPage_延时修改>();
-                       Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改通用页面=>UniversalPage");
+                       // Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.成功修改通用页面=>UniversalPage");
                     }
                 }
             }
@@ -252,7 +252,17 @@ namespace meanran_xuexi_mods_xiaoyouhua
             { return; }
 
             var 气体显示 = 父节点.transform.Find("CircuitboardGasDisplay");
+            if (气体显示 == null)
+            {
+                Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Error, $"{Plugin_Config.Name}.修改气体显示UI.父节点中不存在[CircuitboardGasDisplay]");
+                return;
+            }
             var 工作界面 = 气体显示.Find("PanelNormal");
+            if (气体显示 == null)
+            {
+                Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Error, $"{Plugin_Config.Name}.修改气体显示UI.父节点中不存在[PanelNormal]");
+                return;
+            }
             {
                 var com = 工作界面.Find("DisplayName");
                 var 文本工具 = com.GetComponent<Text>();

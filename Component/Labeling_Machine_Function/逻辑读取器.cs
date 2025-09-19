@@ -6,7 +6,7 @@ using Assets.Scripts.Objects.Motherboards;
 using Assets.Scripts.Objects.Pipes;
 using HarmonyLib;
 
-namespace meanran_xuexi_mods_xiaoyouhua
+namespace Stationeers_Fixes_Package
 {
     public static partial class 扩展方法
     {

@@ -6,7 +6,7 @@ using Assets.Scripts.Objects.Items;
 using Assets.Scripts.UI;
 using HarmonyLib;
 
-namespace meanran_xuexi_mods_xiaoyouhua
+namespace Stationeers_Fixes_Package
 {
     [HarmonyPatch(typeof(LogicHashGen), nameof(LogicHashGen.InteractWith))]
     public class LogicHashGen_InteractWith_PrefixPatch

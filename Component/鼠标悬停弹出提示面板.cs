@@ -2,7 +2,7 @@ using Assets.Scripts.UI;
 using HarmonyLib;
 using UnityEngine;
 
-namespace meanran_xuexi_mods_xiaoyouhua
+namespace Stationeers_Fixes_Package
 {
     [HarmonyPatch(typeof(PanelToolTip), nameof(PanelToolTip.Initialize))]
     public class PanelToolTip_Initialize_Patch

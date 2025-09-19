@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Reflection;
 
-namespace meanran_xuexi_mods_xiaoyouhua
+namespace Stationeers_Fixes_Package
 {
     [HarmonyPatch(typeof(SlotDisplay), "Initialise")]
     public class SlotDisplay_Initialise_Patch

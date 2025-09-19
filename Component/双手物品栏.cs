@@ -1,6 +1,6 @@
 using HarmonyLib;
 
-namespace meanran_xuexi_mods_xiaoyouhua
+namespace Stationeers_Fixes_Package
 {
     [HarmonyPatch(typeof(PanelHands), nameof(PanelHands.Awake))]
     public class PanelHands_Awake_Patch
