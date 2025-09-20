@@ -33,8 +33,8 @@
 
 ## [Change log]
 ### v2.6.0.0
-·Optimization - String Fixes Effect
-·Fix - Some issues that have occurred
+·Optimization - String Fixes Effect  
+·Fix - Some issues that have occurred  
 
 ### v2.6.0.0-Beta
 ·Update - Support Game Version(26015)  
@@ -92,9 +92,9 @@ QQ:859072704
 
 ## [更新日志]
 ### v2.6.0.0
-·优化-字符串修复效果
+·优化-字符串修复效果  
 
-·修复- 出现的一些问题
+·修复- 出现的一些问题  
 
 ### v2.6.0.0-Beta
 ·更新 - 支持游戏版本(26015)
