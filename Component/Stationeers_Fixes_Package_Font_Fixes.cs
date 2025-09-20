@@ -1,189 +1,120 @@
-﻿using Assets.Scripts.UI;
-using BepInEx.Logging;
-using HarmonyLib;
-using ImGuiNET;
-using ImGuiNET.Unity;
-using Stationeers_Fixes_Package;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using TMPro;
-using UnityEngine;
+﻿// using System;
+// using System.IO;
+// using UnityEngine; // 必须包含的核心命名空间
+// using UnityEngine.UI; // UGUI Text组件需要
+// using TMPro; // TextMeshPro组件需要
 
-namespace Stationeers_Fixes_Package
-{
-    internal class Stationeers_Fixes_Package_Text_Fixes
-    {
-        [HarmonyPatch(typeof(ImGuiManager), "Awake")]
-        public class ImGuiManager_Awake_Patch
-        {
-            private static string ImGui字体路径_主要 = Path.Combine(Directory.GetParent(System.AppDomain.CurrentDomain.BaseDirectory).Parent.FullName, "workshop/content/544550/3560271413/GameData/Font/Microsoft_YaHei.ttc");
-            private static string ImGui字体路径_次要 = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "BepInEx/plugins/Stationeers-Fixes-Package/Font/Microsoft_YaHei.ttc");
-            private static FieldInfo 字体引用偏移 = typeof(ImGuiManager).GetField("_fontAtlasConfiguration", BindingFlags.Instance | BindingFlags.NonPublic);
-            public static void Postfix(ref ImGuiManager __instance)
-            {
-                // var 游戏程序目录 = System.AppDomain.CurrentDomain.BaseDirectory;     
+// // 确保类在正确的命名空间下（可选，若使用命名空间需保持一致）
+// namespace FontLoaderNamespace
+// {
+//     public class Unity2022FontLoader : MonoBehaviour
+//     {
+//         // 本地字体路径（可在Inspector设置或通过配置类获取）
+//         public string localFontPath;
 
-                // 创建一个字体定义添加到配置文件中
-                Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.ImGui字体路径_主要: {ImGui字体路径_主要}");
-                Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.ImGui字体路径_次要: {ImGui字体路径_次要}");
+//         // 字体缓存
+//         private Font _uguiFont;
+//         private TMP_FontAsset _tmpFontAsset;
+//         private Font _imguiFont;
 
-                var _fontAtlasConfiguration = 字体引用偏移.GetValue(__instance) as FontAtlasConfigAsset;
-                var Fonts = _fontAtlasConfiguration.Fonts;
-                var _ = new FontDefinition[Fonts.Length + 1];
+//         private void Start()
+//         {
+//             // 从配置类获取路径（示例）
+//             if (string.IsNullOrEmpty(localFontPath))
+//             {
+//                 localFontPath = LocationConfig.FontLocation1;
+//             }
 
-                ImGuiNET.Unity.FontDefinition 字体定义;
-                if (File.Exists(ImGui字体路径_主要))
-                {
-                    扩展方法.创建ImGui字体定义(out 字体定义, ImGui字体路径_主要);
-                }
-                else
-                {
-                    扩展方法.创建ImGui字体定义(out 字体定义, ImGui字体路径_次要);
-                }
+//             // 检查必要条件
+//             if (CheckPrerequisites())
+//             {
+//                 LoadAndApplyFonts();
+//             }
+//         }
 
-                _[0] = Fonts[0];
-                _[1] = Fonts[1];
-                _[2] = 字体定义;
-                for (var i = 3; i < _.Length; i++)
-                    _[i] = Fonts[i - 1];
-                _fontAtlasConfiguration.Fonts = _;
-                // TODO: 是否需要销毁Fonts数组,防止内存泄露
-            }
-        }
+//         /// <summary>
+//         /// 检查加载字体的必要条件
+//         /// </summary>
+//         private bool CheckPrerequisites()
+//         {
+//             // 检查命名空间引用（编译时自动检查，此处提示可能的缺失）
+//             // 确保已勾选 TextMeshPro 包（Window > Package Manager）
 
-        [HarmonyPatch(typeof(TextureManager), nameof(TextureManager.BuildFontAtlas))]
-        public class TextureManager_BuildFontAtlas_Patch
-        {
-            private static MethodInfo AllocateGlyphRangeArray = typeof(TextureManager).GetMethod("AllocateGlyphRangeArray", BindingFlags.Instance | BindingFlags.NonPublic);
-            public static bool Prefix(ref TextureManager __instance, ImGuiIOPtr io, in FontAtlasConfigAsset settings)
-            {
-                if (io.Fonts.IsBuilt())
-                {
-                    __instance.DestroyFontAtlas(io);
-                }
+//             // 检查文件是否存在
+//             if (!File.Exists(localFontPath))
+//             {
+//                 Debug.LogError($"必要条件缺失：字体文件不存在 → {localFontPath}");
+//                 return false;
+//             }
 
-                if (!io.MouseDrawCursor)
-                {
-                    io.Fonts.Flags |= ImFontAtlasFlags.NoMouseCursors;
-                }
+//             // 检查字体格式（Unity 2022支持.ttf/.otf）
+//             string extension = Path.GetExtension(localFontPath).ToLower();
+//             if (extension != ".ttf" && extension != ".otf")
+//             {
+//                 Debug.LogError($"必要条件缺失：不支持的字体格式 → {extension}，请使用.ttf或.otf");
+//                 return false;
+//             }
 
-                if (settings == null)
-                {
-                    io.Fonts.AddFontDefault();
-                    io.Fonts.Build();
-                    return false;
-                }
+//             return true;
+//         }
 
-                FontDefinition[] fonts = settings.Fonts;
+//         /// <summary>
+//         /// 加载并应用字体（使用Unity 2022支持的API）
+//         /// </summary>
+//         private void LoadAndApplyFonts()
+//         {
+//             try
+//             {
+//                 byte[] fontBytes = File.ReadAllBytes(localFontPath);
 
-                for (int i = 0; i < 2; i++)
-                {
-                    FontDefinition fontDefinition = fonts[i];
-                    string text = Path.Combine(Application.streamingAssetsPath, fontDefinition.FontPath);
-                    if (!File.Exists(text))
-                    {
-                        Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.字体路径不存在,生成图集失败: " + text);
-                        continue;
-                    }
+//                 _uguiFont = Font.cre(fontBytes, fontBytes.Length);
+//                 _imguiFont = _uguiFont; // IMGUI与UGUI共用字体
 
-                    ImFontConfig fontConfig = default(ImFontConfig);
-                    ImFontConfigPtr imFontConfigPtr = new ImFontConfigPtr(ref fontConfig);
-                    FontConfig config = fontDefinition.Config;
-                    config.ApplyTo(imFontConfigPtr);
-                    imFontConfigPtr.GlyphRanges = (IntPtr)AllocateGlyphRangeArray.Invoke(__instance, new object[] { fontDefinition.Config });
-                    io.Fonts.AddFontFromFileTTF(text, fontDefinition.Config.SizeInPixels, imFontConfigPtr);
-                }
+//                 // 2. 转换为TextMeshPro字体资产
+//                 _tmpFontAsset = TMP_FontAsset.CreateFontAsset(_uguiFont);
 
-                for (int i = 2; i < 3; i++)
-                {
-                    FontDefinition fontDefinition = fonts[i];
-                    string text = fontDefinition.FontPath;
-                    if (!File.Exists(text))
-                    {
-                        Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.字体路径不存在,生成图集失败: " + text);
-                        continue;
-                    }
+//                 // 3. 应用到所有文本组件
+//                 ApplyToUGUI();
+//                 ApplyToTMP();
+//                 ApplyToIMGUI();
 
-                    ImFontConfig fontConfig = default(ImFontConfig);
-                    ImFontConfigPtr imFontConfigPtr = new ImFontConfigPtr(ref fontConfig);
-                    FontConfig config = fontDefinition.Config;
-                    config.ApplyTo(imFontConfigPtr);
-                    imFontConfigPtr.GlyphRanges = (IntPtr)AllocateGlyphRangeArray.Invoke(__instance, new object[] { fontDefinition.Config });
-                    io.Fonts.AddFontFromFileTTF(text, fontDefinition.Config.SizeInPixels, imFontConfigPtr);
-                }
+//                 Debug.Log("字体加载成功（Unity 2022兼容模式）");
+//             }
+//             catch (Exception e)
+//             {
+//                 Debug.LogError($"加载失败：{e.Message}\n可能原因：文件损坏、权限不足或字体格式错误");
+//             }
+//         }
 
-                for (int i = 3; i < fonts.Length; i++)
-                {
-                    FontDefinition fontDefinition = fonts[i];
-                    string text = Path.Combine(Application.streamingAssetsPath, fontDefinition.FontPath);
-                    if (!File.Exists(text))
-                    {
-                        Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Warning, $"{Plugin_Config.Name}.字体路径不存在,生成图集失败: " + text);
-                        continue;
-                    }
+//         // 应用到UGUI Text
+//         private void ApplyToUGUI()
+//         {
+//             foreach (var text in FindObjectsOfType<Text>())
+//             {
+//                 text.font = _uguiFont;
+//                 text.SetAllDirty();
+//             }
+//         }
 
-                    ImFontConfig fontConfig = default(ImFontConfig);
-                    ImFontConfigPtr imFontConfigPtr = new ImFontConfigPtr(ref fontConfig);
-                    FontConfig config = fontDefinition.Config;
-                    config.ApplyTo(imFontConfigPtr);
-                    imFontConfigPtr.GlyphRanges = (IntPtr)AllocateGlyphRangeArray.Invoke(__instance, new object[] { fontDefinition.Config });
-                    io.Fonts.AddFontFromFileTTF(text, fontDefinition.Config.SizeInPixels, imFontConfigPtr);
-                }
+//         // 应用到TextMeshPro
+//         private void ApplyToTMP()
+//         {
+//             foreach (var tmpText in FindObjectsOfType<TMP_Text>())
+//             {
+//                 tmpText.font = _tmpFontAsset;
+//                 tmpText.fontSharedMaterial = _tmpFontAsset.material;
+//                 tmpText.SetAllDirty();
+//             }
+//         }
 
-                if (io.Fonts.Fonts.Size == 0)
-                {
-                    io.Fonts.AddFontDefault();
-                }
-
-                if (settings.Rasterizer == FontRasterizerType.StbTrueType)
-                {
-                    io.Fonts.Build();
-                    return false;
-                }
-
-                Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Error, $"{Plugin_Config.Name}.{settings.Rasterizer:G} rasterizer not available, using {FontRasterizerType.StbTrueType:G}. Check if feature is enabled (PluginFeatures.cs).");
-                io.Fonts.Build();
-
-                return false;
-            }
-        }
-        [HarmonyPatch(typeof(TMP_Settings), "defaultFontAsset", MethodType.Getter)]
-        public class TMP_Settings_defaultFontAsset_Patch
-        {
-            // TMP组件若在构造时没有指定使用的字符图集,则默认使用defaultFontAsset这个字符图集
-            // 注:LocalizedFont组件会在每帧渲染时替换回官方内置中文字体,因此此补丁的作用很小,仅仅用于小部分默认使用了英文字体的文本组件
-            //    恰恰也正是这部分文本组件,会显示口口
-            public static bool Prefix(ref TMP_FontAsset __result)
-            {
-                if (AssetsLoad.单例.内置TMP字体)
-                {
-                    __result = AssetsLoad.单例.内置TMP字体;
-                    // 入口点类.Log.LogInfo("成功拦截TMP_Settings_defaultFontAsset_Patch");
-                    return false;
-                }
-                else
-                {
-                    Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Error, $"{Plugin_Config.Name}.拦截失败TMP_Settings_defaultFontAsset_Patch");
-                    return true;
-                }
-            }
-        }
-
-        [HarmonyPatch(typeof(TextMeshProUGUI), "Awake")]
-        public class TextMeshProUGUI_Awake_Patch
-        {
-            public static void Postfix(ref TextMeshProUGUI __instance)
-            {
-                if (AssetsLoad.单例.内置TMP字体)
-                    __instance.font = AssetsLoad.单例.内置TMP字体;
-                //else
-                //Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(LogLevel.Error, $"{Plugin_Config.Name}.拦截失败TextMeshProUGUI_Awake_Patch");
-            }
-        }
-    }
-}
+//         // 应用到IMGUI
+//         private void ApplyToIMGUI()
+//         {
+//             if (GUI.skin != null)
+//             {
+//                 GUI.skin.font = _imguiFont;
+//             }
+//         }
+//     }
+// }
+    

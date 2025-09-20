@@ -1,64 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- 导入MSBuild公共属性 -->
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  
+  <!-- 项目基本配置 -->
   <PropertyGroup>
-    <LangVersion>10.0</LangVersion>
+    <LangVersion>10.0</LangVersion> <!-- C#语言版本 -->
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{EC92FB9C-2017-48D5-9FBE-E41A7160008D}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <OutputType>Library</OutputType> <!-- 输出类型为类库 -->
     <RootNamespace>Stationeers_Fixes_Package</RootNamespace>
     <AssemblyName>Stationeers_Fixes_Package</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion> <!-- 目标.NET框架版本 -->
     <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
+    <Deterministic>true</Deterministic> <!-- 启用确定性编译 -->
   </PropertyGroup>
+
+  <!-- Debug配置 -->
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>true</DebugSymbols> <!-- 生成调试符号 -->
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>false</Optimize> <!-- 不优化代码 -->
     <OutputPath>D:\SteamLibrary\steamapps\workshop\content\544550\3560271413\GameData\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks> <!-- 允许不安全代码块 -->
   </PropertyGroup>
+
+  <!-- Release配置 -->
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType> <!-- 仅生成PDB文件 -->
+    <Optimize>true</Optimize> <!-- 优化代码 -->
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+
+  <!-- 项目引用（已替换为..\..\Lib\目录下的库） -->
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\..\引用\0Harmony.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\Lib\0Harmony.dll</HintPath>
+      <Private>False</Private> <!-- 不复制到输出目录 -->
     </Reference>
     <Reference Include="Assembly-CSharp-nstrip">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\引用\Assembly-CSharp-nstrip.dll</HintPath>
+      <HintPath>..\..\Lib\Assembly-CSharp-nstrip.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="BepInEx">
-      <HintPath>..\..\引用\BepInEx.dll</HintPath>
+      <HintPath>..\..\Lib\BepInEx.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="RG.ImGui">
-      <HintPath>..\..\引用\RG.ImGui.dll</HintPath>
+      <HintPath>..\..\Lib\RG.ImGui.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="RG.ImGui.Unity">
-      <HintPath>..\..\引用\RG.ImGui.Unity.dll</HintPath>
+      <HintPath>..\..\Lib\RG.ImGui.Unity.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.ParticleSystemModule">
-      <HintPath>..\..\引用\UnityEngine.ParticleSystemModule.dll</HintPath>
+      <HintPath>..\..\Lib\UnityEngine.ParticleSystemModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>..\..\Lib\UnityEngine.UIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" /> <!-- 系统核心库 -->
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -66,44 +78,54 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="UniTask">
-      <HintPath>..\..\引用\UniTask.dll</HintPath>
+      <HintPath>..\..\Lib\UniTask.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>..\..\引用\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>..\..\Lib\Unity.TextMeshPro.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\Lib\UnityEngine.IMGUIModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\..\引用\UnityEngine.dll</HintPath>
+      <HintPath>..\..\Lib\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>..\..\引用\UnityEngine.AssetBundleModule.dll</HintPath>
+      <HintPath>..\..\Lib\UnityEngine.AssetBundleModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\引用\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\..\Lib\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>..\..\引用\UnityEngine.TextRenderingModule.dll</HintPath>
+      <HintPath>..\..\Lib\UnityEngine.TextRenderingModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\引用\UnityEngine.UI.dll</HintPath>
+      <HintPath>..\..\Lib\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
+
+  <!-- 编译文件 -->
   <ItemGroup>
-    <Compile Include=".\*.cs" />
-    <Compile Include=".\Component\*.cs" />
-    <Compile Include=".\Component\Labeling_Machine_Function\*.cs" />
+    <Compile Include=".\*.cs" /> <!-- 根目录下的所有C#文件 -->
+    <Compile Include=".\Component\*.cs" /> <!-- Component目录下的C#文件 -->
+    <Compile Include=".\Component\Labeling_Machine_Function\*.cs" /> <!-- 子目录下的C#文件 -->
     <Compile Include=".\Component\Text_Fixes\*.cs" />
-    <Compile Include=".\Properties\AssemblyInfo.cs" />
+    <Compile Include=".\Component\UI_Canvas\*.cs" />
+    <Compile Include=".\Properties\AssemblyInfo.cs" /> <!-- 程序集信息文件 -->
   </ItemGroup>
-    <ItemGroup>
-    <EmbeddedResource Include=".\Resources\**\*" />
+
+  <!-- 嵌入资源 -->
+  <ItemGroup>
+    <EmbeddedResource Include=".\Resources\**\*" /> <!-- Resources目录下的所有资源文件 -->
   </ItemGroup>
-  <ItemGroup />
+
+  <!-- 导入C#编译目标 -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

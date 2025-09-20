@@ -1,36 +1,9 @@
-﻿using Assets.Scripts.Inventory;
-using Assets.Scripts.Localization2;
-using Assets.Scripts.Networking;
-using Assets.Scripts.Objects;
-using Assets.Scripts.Objects.Electrical;
-using Assets.Scripts.Objects.Entities;
-using Assets.Scripts.Objects.Items;
-using Assets.Scripts.Objects.Pipes;
-using Assets.Scripts.Serialization;
-using Assets.Scripts.UI;
-using BepInEx;
+﻿using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
-using ImGuiNET;
-using ImGuiNET.Unity;
-using Stationeers_Fixes_Package;
-using SimpleSpritePacker;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Reflection.Emit;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
-using TMPro;
+using BepInEx.Configuration;
 using UnityEngine;
 using UnityEngine.UI;
-using BepInEx.Configuration;
 
 namespace Stationeers_Fixes_Package
 {
@@ -48,7 +21,7 @@ namespace Stationeers_Fixes_Package
         public static Harmony InitHarmony;
         private void Awake()
         {
-
+            Logger.LogWarning($"{Plugin_Config.Name}.初始化成功!");
             CreatePluginConfig();
             Logger.LogWarning($"{Plugin_Config.Name}.配置文件创建&读取成功!");
             if (!Plugin_Activate.Value)
@@ -60,7 +33,8 @@ namespace Stationeers_Fixes_Package
             var a = AssetsLoad.单例;
             Harmony InitHarmony = new Harmony(Plugin_Config.ID);
             InitHarmony.PatchAll();
-            Logger.LogWarning($"{Plugin_Config.Name}.初始化成功!");
+            Logger.LogWarning($"{Plugin_Config.Name}.补丁成功!");
+            // UI_Config.Initialize();
         }
         private static Stationeers_Fixes_Package_Initialization _instance;
         private Stationeers_Fixes_Package_Initialization() { }
@@ -123,6 +97,17 @@ namespace Stationeers_Fixes_Package
                 defaultValue: true,
                 description: "[字体修复]&[Text_Fixes]"
             );
+        }
+    }
+    public class BepinExTool
+    {
+        public void ExternalMessage(string Function, string IsError, string Message)
+        {
+            if (IsError == "true")
+            {
+                Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(BepInEx.Logging.LogLevel.Error, $"{Plugin_Config.Name}.{Function}.错误:({Message})");
+            }
+            else { Stationeers_Fixes_Package_Initialization.BepinExTool().BepinExMessage(BepInEx.Logging.LogLevel.Warning, $"{Plugin_Config.Name}.{Function}.{Message}"); }
         }
     }
 }
